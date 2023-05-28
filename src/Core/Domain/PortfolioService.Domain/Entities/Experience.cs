@@ -1,6 +1,6 @@
 ﻿namespace PortfolioService.Domain.Entities
 {
-    public class Experience
+    public class Experience : BaseEntity
     {
         public string Title { get; set; }
         public string EmploymentType { get; set; }
