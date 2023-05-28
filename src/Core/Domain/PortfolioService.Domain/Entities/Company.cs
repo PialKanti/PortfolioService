@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PortfolioService.Domain.Entities
+﻿namespace PortfolioService.Domain.Entities
 {
-    internal class Company
+    public class Company
     {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string LocationType { get; set; }
     }
 }
