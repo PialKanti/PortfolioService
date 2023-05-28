@@ -1,8 +1,16 @@
+using PortfolioService.Api.Extensions.DependencyInjection;
+using PortfolioService.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddMongoDbClient(builder.Configuration);
+builder.Services.AddApplicationServices();
+builder.Services.AddAutoMappers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

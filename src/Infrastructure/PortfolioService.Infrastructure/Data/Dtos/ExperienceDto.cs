@@ -1,8 +1,8 @@
 ﻿using PortfolioService.Domain.Entities;
 
-namespace PortfolioService.Api.Dtos.Request
+namespace PortfolioService.Infrastructure.Data.Dtos
 {
-    public class ExperienceCreateRequest
+    public class ExperienceDto : BaseDto
     {
         public string Title { get; set; }
         public string EmploymentType { get; set; }
