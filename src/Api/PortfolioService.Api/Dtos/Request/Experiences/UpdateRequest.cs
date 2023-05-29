@@ -1,10 +1,12 @@
 ﻿using PortfolioService.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace PortfolioService.Api.Dtos.Request
+namespace PortfolioService.Api.Dtos.Request.Experiences
 {
-    public class ExperienceCreateRequest
+    public class UpdateRequest
     {
+        [Required]
+        public string Id { get; set; }
         [Required]
         public string? Title { get; set; }
         [Required]

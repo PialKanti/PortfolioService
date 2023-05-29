@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PortfolioService.Api.Dtos.Request.Experiences;
+using PortfolioService.Api.Dtos.Request.Projects;
 using PortfolioService.Application.Interfaces;
 using PortfolioService.Domain.Entities;
 
 namespace PortfolioService.Api.Controllers
 {
-    public class ExperiencesController : BaseApiController
+    public class ProjectsController : BaseApiController
     {
-        private readonly IExperienceRepository<Experience> _repository;
+        private readonly IProjectRepository<Project> _repository;
         private readonly IMapper _mapper;
 
-        public ExperiencesController(IExperienceRepository<Experience> repository, IMapper mapper)
+        public ProjectsController(IProjectRepository<Project> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -20,7 +20,7 @@ namespace PortfolioService.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] CreateRequest request)
         {
-            var entity = _mapper.Map<Experience>(request);
+            var entity = _mapper.Map<Project>(request);
             await _repository.CreateAsync(entity);
             return CreatedAtAction("Get", new { id = entity.Id }, entity);
         }
@@ -33,7 +33,7 @@ namespace PortfolioService.Api.Controllers
                 return BadRequest();
             }
 
-            var entity = _mapper.Map<Experience>(request);
+            var entity = _mapper.Map<Project>(request);
             await _repository.UpdateAsync(id, entity);
 
             return NoContent();

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using PortfolioService.Api.Dtos.Request;
 using PortfolioService.Application.Interfaces;
 using PortfolioService.Domain.Entities;
 using PortfolioService.Infrastructure.Data;
@@ -25,6 +24,7 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IExperienceRepository<Experience>, ExperienceRepository>();
+            services.AddScoped<IProjectRepository<Project>, ProjectRepository>();
 
             return services;
         }
@@ -34,9 +34,14 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
             var mapperConfig = new MapperConfiguration(configuration =>
             {
                 configuration.CreateMap<Experience, ExperienceDto>();
-                configuration.CreateMap<ExperienceCreateRequest, Experience>();
-                configuration.CreateMap<ExperienceUpdateRequest, Experience>();
                 configuration.CreateMap<ExperienceDto, Experience>();
+                configuration.CreateMap<Dtos.Request.Experiences.CreateRequest, Experience>();
+                configuration.CreateMap<Dtos.Request.Experiences.UpdateRequest, Experience>();
+
+                configuration.CreateMap<Project, ProjectDto>();
+                configuration.CreateMap<ProjectDto, Project>();
+                configuration.CreateMap<Dtos.Request.Projects.CreateRequest, Project>();
+                configuration.CreateMap<Dtos.Request.Projects.UpdateRequest, Project>();
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
