@@ -3,6 +3,7 @@ using PortfolioService.Api.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCorsPolicy(builder.Configuration);
 
 builder.Services.AddControllers();
 

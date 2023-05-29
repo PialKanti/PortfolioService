@@ -58,5 +58,21 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
 
             return services;
         }
+
+        public static IServiceCollection AddCorsPolicy(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(configuration.GetSection("CorsPolicy:Name").Get<string>(), configurePolicy =>
+                {
+                    configurePolicy.WithOrigins(configuration.GetSection("CorsPolicy:Urls").Get<string[]>())
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
+
+            return services;
+        }
     }
 }
