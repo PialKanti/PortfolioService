@@ -25,10 +25,22 @@ namespace PortfolioService.Api.Controllers
             return Ok();
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(string id)
+        {
+            var entity = await _repository.GetAsync(id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(entity);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var entities = await _repository.GetAllAsync();
+            var entities = await _repository.GetAsync();
             return Ok(entities);
         }
     }

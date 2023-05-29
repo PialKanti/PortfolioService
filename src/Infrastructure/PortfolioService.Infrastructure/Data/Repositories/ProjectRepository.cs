@@ -20,7 +20,7 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Project> GetAsync(string id)
+        public Task<Project?> GetAsync(string id)
         {
             throw new NotImplementedException();
         }
