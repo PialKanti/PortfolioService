@@ -24,12 +24,12 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             return entity;
         }
 
-        public Task<Experience> UpdateAsync(Experience entity)
+        public Task<Experience> UpdateAsync(string id, Experience entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Experience> DeleteAsync(Experience entity)
+        public Task<Experience> DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }

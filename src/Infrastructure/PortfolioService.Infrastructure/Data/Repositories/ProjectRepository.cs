@@ -10,12 +10,12 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Project> UpdateAsync(Project entity)
+        public Task<Project> UpdateAsync(string id, Project entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Project> DeleteAsync(Project entity)
+        public Task<Project> DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
