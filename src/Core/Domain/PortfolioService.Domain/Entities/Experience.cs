@@ -8,6 +8,6 @@
         public IEnumerable<string> Responsibilities { get; set; }
         public IEnumerable<string> Skills { get; set; }
         public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace PortfolioService.Api.Dtos.Request.Experiences
         [Required]
         public IEnumerable<string>? Skills { get; set; }
         [Required]
-        public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
+        public DateTime? StartDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
     }
 }
