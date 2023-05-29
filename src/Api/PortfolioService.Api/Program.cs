@@ -1,5 +1,4 @@
 using PortfolioService.Api.Extensions.DependencyInjection;
-using PortfolioService.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
