@@ -20,7 +20,12 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Project>> GetAllAsync()
+        public Task<Project> GetAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Project>> GetAsync()
         {
             throw new NotImplementedException();
         }

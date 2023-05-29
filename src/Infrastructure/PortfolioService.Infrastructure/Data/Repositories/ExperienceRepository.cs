@@ -10,18 +10,19 @@ namespace PortfolioService.Infrastructure.Data.Repositories
     {
         private readonly MongoClientService _dbClientService;
         private readonly IMapper _mapper;
+        private readonly IMongoCollection<ExperienceDto> _collection;
 
         public ExperienceRepository(MongoClientService dbClientService, IMapper mapper)
         {
             _dbClientService = dbClientService;
             _mapper = mapper;
+            _collection = _dbClientService.GetCollection<ExperienceDto>("experiences");
         }
 
         public async Task<Experience> CreateAsync(Experience entity)
         {
-            var collection = _dbClientService.GetCollection<ExperienceDto>("experiences");
             var dtoModel = _mapper.Map<ExperienceDto>(entity);
-            await collection.InsertOneAsync(dtoModel);
+            await _collection.InsertOneAsync(dtoModel);
             return entity;
         }
 
@@ -35,10 +36,14 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Experience>> GetAllAsync()
+        public Task<Experience> GetAsync(string id)
         {
-            var collection = _dbClientService.GetCollection<ExperienceDto>("experiences");
-            var filteredList = await collection.Find(_=> true).ToListAsync();
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Experience>> GetAsync()
+        {
+            var filteredList = await _collection.Find(_=> true).ToListAsync();
 
             return filteredList.Select(dtoModel => _mapper.Map<Experience>(dtoModel));
         }
