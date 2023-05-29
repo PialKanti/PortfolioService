@@ -24,9 +24,11 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             return entity;
         }
 
-        public Task<Experience> UpdateAsync(string id, Experience entity)
+        public async Task<Experience> UpdateAsync(string id, Experience entity)
         {
-            throw new NotImplementedException();
+            var dtoModel = _mapper.Map<ExperienceDto>(entity);
+            await _collection.ReplaceOneAsync(experience => experience.Id == id, dtoModel);
+            return entity;
         }
 
         public Task<Experience> DeleteAsync(string id)

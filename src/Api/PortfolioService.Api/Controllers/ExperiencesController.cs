@@ -25,6 +25,20 @@ namespace PortfolioService.Api.Controllers
             return CreatedAtAction("Get", new { id = entity.Id }, entity);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync(string id, [FromBody] ExperienceUpdateRequest request)
+        {
+            if (!string.Equals(id, request.Id))
+            {
+                return BadRequest();
+            }
+
+            var entity = _mapper.Map<Experience>(request);
+            await _repository.UpdateAsync(id, entity);
+
+            return NoContent();
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(string id)
         {

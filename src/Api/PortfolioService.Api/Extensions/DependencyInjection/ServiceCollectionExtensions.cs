@@ -35,6 +35,7 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
             {
                 configuration.CreateMap<Experience, ExperienceDto>();
                 configuration.CreateMap<ExperienceCreateRequest, Experience>();
+                configuration.CreateMap<ExperienceUpdateRequest, Experience>();
                 configuration.CreateMap<ExperienceDto, Experience>();
             });
             IMapper mapper = mapperConfig.CreateMapper();
