@@ -18,11 +18,18 @@ namespace PortfolioService.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]ExperienceCreateRequest request)
+        public async Task<IActionResult> CreateAsync([FromBody]ExperienceCreateRequest request)
         {
             var entity = _mapper.Map<Experience>(request);
             await _repository.CreateAsync(entity);
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            var entities = await _repository.GetAllAsync();
+            return Ok(entities);
         }
     }
 }

@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddMongoDbClient(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddAutoMappers();
+builder.Services.AddConfigurationOptions();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

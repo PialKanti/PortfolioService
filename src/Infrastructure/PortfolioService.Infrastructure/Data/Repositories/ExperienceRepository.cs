@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MongoDB.Bson;
+using MongoDB.Driver;
 using PortfolioService.Application.Interfaces;
 using PortfolioService.Domain.Entities;
 using PortfolioService.Infrastructure.Data.Dtos;
@@ -19,10 +19,9 @@ namespace PortfolioService.Infrastructure.Data.Repositories
 
         public async Task<Experience> CreateAsync(Experience entity)
         {
-            var collection = _dbClientService.GetCollection<BsonDocument>("experiences");
+            var collection = _dbClientService.GetCollection<ExperienceDto>("experiences");
             var dtoModel = _mapper.Map<ExperienceDto>(entity);
-            var document = dtoModel.ToBsonDocument();
-            await collection.InsertOneAsync(document);
+            await collection.InsertOneAsync(dtoModel);
             return entity;
         }
 
@@ -36,9 +35,12 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Experience>> GetAllAsync()
+        public async Task<IEnumerable<Experience>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var collection = _dbClientService.GetCollection<ExperienceDto>("experiences");
+            var filteredList = await collection.Find(_=> true).ToListAsync();
+
+            return filteredList.Select(dtoModel => _mapper.Map<Experience>(dtoModel));
         }
     }
 }
