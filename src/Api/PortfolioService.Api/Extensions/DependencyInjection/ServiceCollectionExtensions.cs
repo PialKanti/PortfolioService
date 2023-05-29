@@ -14,7 +14,7 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
             services.AddSingleton<MongoClientService, MongoClientService>(sp =>
             {
                 var connectionString = configuration.GetConnectionString("MongoDB");
-                var database = "portfolio_db";
+                var database = configuration.GetConnectionString("DatabaseName");
                 return new MongoClientService(connectionString, database);
             });
 
