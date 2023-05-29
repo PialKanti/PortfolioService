@@ -4,7 +4,7 @@
     {
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(string id,T entity);
-        Task<T> DeleteAsync(string id);
+        Task DeleteAsync(string id);
         Task<T?> GetAsync(string id);
         Task<IEnumerable<T>> GetAsync();
     }

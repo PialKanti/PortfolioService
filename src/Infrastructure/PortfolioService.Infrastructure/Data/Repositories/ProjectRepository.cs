@@ -15,7 +15,7 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Project> DeleteAsync(string id)
+        public Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
