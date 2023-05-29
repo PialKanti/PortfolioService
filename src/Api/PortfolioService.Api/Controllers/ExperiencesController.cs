@@ -22,7 +22,7 @@ namespace PortfolioService.Api.Controllers
         {
             var entity = _mapper.Map<Experience>(request);
             await _repository.CreateAsync(entity);
-            return Ok();
+            return CreatedAtAction("Get", new { id = entity.Id }, entity);
         }
 
         [HttpGet("{id}")]
