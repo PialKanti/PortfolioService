@@ -47,5 +47,11 @@ namespace PortfolioService.Infrastructure.Data.Repositories
             var filteredList = await _collection.Find(dtoModel => true).ToListAsync();
             return filteredList.Select(dtoModel => _mapper.Map<Project>(dtoModel));
         }
+
+        public async Task<IEnumerable<Project>> GetByTypeAsync(string type)
+        {
+            var filteredList = await _collection.Find(dtoModel => string.Equals(dtoModel.Type, type)).ToListAsync();
+            return filteredList.Select(dtoModel => _mapper.Map<Project>(dtoModel));
+        }
     }
 }

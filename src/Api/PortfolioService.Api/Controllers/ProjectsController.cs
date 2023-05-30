@@ -58,6 +58,13 @@ namespace PortfolioService.Api.Controllers
             return Ok(entities);
         }
 
+        [HttpGet("type/{type}")]
+        public async Task<IActionResult> GetByTypeAsync(string type)
+        {
+            var entities = await _repository.GetByTypeAsync(type);
+            return Ok(entities);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(string id)
         {

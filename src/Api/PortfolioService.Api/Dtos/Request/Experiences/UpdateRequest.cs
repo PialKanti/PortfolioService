@@ -6,7 +6,7 @@ namespace PortfolioService.Api.Dtos.Request.Experiences
     public class UpdateRequest
     {
         [Required]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         [Required]
         public string? Title { get; set; }
         [Required]

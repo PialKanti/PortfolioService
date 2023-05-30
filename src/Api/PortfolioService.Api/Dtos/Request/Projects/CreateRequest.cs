@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PortfolioService.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace PortfolioService.Api.Dtos.Request.Projects
 {
@@ -7,13 +8,15 @@ namespace PortfolioService.Api.Dtos.Request.Projects
         [Required]
         public string? Name { get; set; }
         [Required]
-        public string? ProjectUrl { get; set; }
+        public string? Type { get; set; }
+        [Required]
+        public ProjectLink? ProjectLink { get; set; }
         [Required]
         public IEnumerable<string>? DescriptionList { get; set; }
         [Required]
-        public IEnumerable<string>? Skills { get; set; }
+        public IEnumerable<string>? Technologies { get; set; }
         [Required]
-        public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
+        public DateTime? StartDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
     }
 }
