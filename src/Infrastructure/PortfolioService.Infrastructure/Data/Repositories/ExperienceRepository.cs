@@ -44,7 +44,7 @@ namespace PortfolioService.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<Experience>> GetAsync()
         {
-            var filteredList = await _collection.Find(dtoModel => true).ToListAsync();
+            var filteredList = await _collection.Find(dtoModel => true).SortByDescending(dtoModel => dtoModel.StartDateTime).ToListAsync();
             return filteredList.Select(dtoModel => _mapper.Map<Experience>(dtoModel));
         }
     }
