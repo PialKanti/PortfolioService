@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using PortfolioService.Api.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
