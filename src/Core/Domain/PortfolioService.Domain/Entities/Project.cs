@@ -8,6 +8,6 @@
         public IEnumerable<string> DescriptionList { get; set; }
         public IEnumerable<string> Technologies { get; set; }
         public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
     }
 }
