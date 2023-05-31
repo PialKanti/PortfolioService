@@ -12,7 +12,7 @@ namespace PortfolioService.Api.Dtos.Request.Projects
         [Required]
         public ProjectLink? ProjectLink { get; set; }
         [Required]
-        public IEnumerable<string>? DescriptionList { get; set; }
+        public string? Description { get; set; }
         [Required]
         public IEnumerable<string>? Technologies { get; set; }
         [Required]
