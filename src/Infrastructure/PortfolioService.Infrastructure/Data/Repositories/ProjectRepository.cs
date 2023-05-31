@@ -44,13 +44,15 @@ namespace PortfolioService.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<Project>> GetAsync()
         {
-            var filteredList = await _collection.Find(dtoModel => true).ToListAsync();
+            var filteredList = await _collection.Find(dtoModel => true)
+                .SortByDescending(dtoModel => dtoModel.StartDateTime).ToListAsync();
             return filteredList.Select(dtoModel => _mapper.Map<Project>(dtoModel));
         }
 
         public async Task<IEnumerable<Project>> GetByTypeAsync(string type)
         {
-            var filteredList = await _collection.Find(dtoModel => string.Equals(dtoModel.Type, type)).SortByDescending(dtoModel => dtoModel.StartDateTime).ToListAsync();
+            var filteredList = await _collection.Find(dtoModel => string.Equals(dtoModel.Type, type))
+                .SortByDescending(dtoModel => dtoModel.StartDateTime).ToListAsync();
             return filteredList.Select(dtoModel => _mapper.Map<Project>(dtoModel));
         }
     }

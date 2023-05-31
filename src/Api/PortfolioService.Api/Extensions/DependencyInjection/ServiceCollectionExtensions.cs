@@ -25,6 +25,7 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
         {
             services.AddScoped<IExperienceRepository<Experience>, ExperienceRepository>();
             services.AddScoped<IProjectRepository<Project>, ProjectRepository>();
+            services.AddScoped<IDegreeRepository<Degree>, DegreeRepository>();
 
             return services;
         }
@@ -42,6 +43,11 @@ namespace PortfolioService.Api.Extensions.DependencyInjection
                 configuration.CreateMap<ProjectDto, Project>();
                 configuration.CreateMap<Dtos.Request.Projects.CreateRequest, Project>();
                 configuration.CreateMap<Dtos.Request.Projects.UpdateRequest, Project>();
+
+                configuration.CreateMap<Degree, DegreeDto>();
+                configuration.CreateMap<DegreeDto, Degree>();
+                configuration.CreateMap<Dtos.Request.Degrees.CreateRequest, Degree>();
+                configuration.CreateMap<Dtos.Request.Degrees.UpdateRequest, Degree>();
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
